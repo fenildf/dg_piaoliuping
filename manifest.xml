@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns="http://www.we7.cc" versionCode="0.6">
+	<application setting="true">
+		<name><![CDATA[漂流瓶]]></name>
+		<identifie><![CDATA[dg_piaoliuping]]></identifie>
+		<version><![CDATA[0.1]]></version>
+		<type><![CDATA[activity]]></type>
+		<ability><![CDATA[公众号内部的漂流瓶]]></ability>
+		<description><![CDATA[公众号内部的漂流瓶]]></description>
+		<author><![CDATA[冬瓜]]></author>
+		<url><![CDATA[http://bbs.we7.cc/]]></url>
+	</application>
+	<platform>
+		<subscribes>
+			<message type="text" />
+		</subscribes>
+		<handles>
+			<message type="voice" />
+			<message type="text" />
+		</handles>
+		<rule embed="true" />
+		<card embed="false" />
+	</platform>
+	<bindings>
+	</bindings>
+	<permissions>
+	</permissions>
+	<install><![CDATA[CREATE TABLE `ims_drifting_detail` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `list_id` int(11) DEFAULT NULL,
+  `openid` varchar(255) DEFAULT NULL,
+  `to_openid` varchar(255) DEFAULT NULL,
+  `status` int(11) DEFAULT NULL,
+  `type` int(11) DEFAULT NULL,
+  `media_id` text CHARACTER SET utf8mb4,
+  `created_at` varchar(32) DEFAULT NULL,
+  `updated_at` varchar(32) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
+
+CREATE TABLE `ims_drifting_list` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `openid` varchar(255) DEFAULT NULL,
+  `type` int(11) DEFAULT NULL COMMENT '1.文字、2语音',
+  `media_id` text CHARACTER SET utf8mb4,
+  `status` int(11) DEFAULT NULL COMMENT '0.未被领取，1.正在被查看,2 被捞起来来了',
+  `to_openid` varchar(255) DEFAULT NULL,
+  `created_at` varchar(32) DEFAULT NULL,
+  `updated_at` varchar(32) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
+
+
+]]></install>
+	<uninstall><![CDATA[DROP TABLE `ims_drifting_list`;
+	DROP TABLE `ims_drifting_detail`;
+]]></uninstall>
+	<upgrade><![CDATA[]]></upgrade>
+</manifest>
